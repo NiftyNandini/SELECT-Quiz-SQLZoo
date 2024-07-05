@@ -1,0 +1,154 @@
+name	continent	area	population	gdp
+Afghanistan	South Asia	652225	26000000	
+Albania	Europe	28728	3200000	6656000000
+Algeria	Middle East	2400000	32900000	75012000000
+Andorra	Europe	468	64000	
+Brazil	South America	8550000	182800000	564852000000
+Colombia	South America	1140000	45600000	
+Nauru	Asia-Pacific	21	9900	
+Uzbekistan	Central Asia	447000	26000000	
+...
+
+1. Select the code which gives the name of countries beginning with U
+A.SELECT name
+  FROM world
+ WHERE name
+ BEGIN with U
+
+B.SELECT name
+  FROM world
+ WHERE name LIKE '%U'
+
+C.SELECT name
+  FROM world
+ WHERE name LIKE '%u%'
+
+D.SELECT name
+  FROM world
+ WHERE name LIKE U
+
+E.SELECT name
+  FROM world
+ WHERE name LIKE 'U%'
+
+ANSWER: E
+
+2. Select the code which shows just the population of United Kingdom?
+A.SELECT population
+  FROM 'United Kingdom'
+
+B.SELECT name
+  FROM world
+ WHERE population = 'United Kingdom'
+
+C.SELECT FROM world
+ WHERE population IN 'United Kingdom'
+
+D.SELECT population
+  FROM world
+ WHERE name = 'United Kingdom'
+
+E.SELECT population
+  FROM world
+ WHERE 'United Kingdom' IN name
+
+ANSWER : D
+
+3. Select the answer which shows the problem with this SQL code - the intended result should be the continent of France:
+SELECT continent 
+   FROM world 
+  WHERE 'name' = 'France'
+
+A.continent should be 'continent'
+B.'name' should be name
+C.'France' should be "France"
+D.'France' should be France = should be IN
+ANSWER : B
+
+4. Select the result that would be obtained from the following code:
+ SELECT name, population / 10 
+  FROM world 
+ WHERE population < 10000
+
+A.Andorra	6400
+Nauru	990
+
+B.Andorra	64000
+Nauru	9900
+
+C.Nauru	99
+
+D.Nauru	990
+
+E.Nauru	9900
+
+ANSWER : D
+
+5. Select the code which would reveal the name and population of countries in Europe and Asia
+
+A.SELECT name
+  FROM world 
+ WHERE continent IN ('Europe', 'Asia')
+
+B.SELECT name, population
+  FROM world
+ WHERE continent IN ('Europe', 'Asia')
+
+C.SELECT name, population
+  FROM world
+ WHERE name IN (Europe Asia)
+
+D.SELECT name, population
+  FROM world
+ WHERE name IS ('Europe', 'Asia')
+
+E.SELECT name, population
+  FROM world
+ WHERE continent = ('Europe', 'Asia')
+
+ANSWER : B
+
+6. Select the code which would give two rows
+
+A.SELECT name FROM world
+ WHERE name = 'Cuba'
+
+B.SELECT name FROM world
+ WHERE name = 'Cuba'
+   AND name = 'Togo'
+
+C.SELECT name FROM world
+ WHERE name EITHER ('Cuba', 'Togo')
+
+D.SELECT name FROM world
+ WHERE name IN ('Cuba', 'Togo')
+
+E.SELECT name FROM WHERE name IS 'Mali'
+
+ANSWER:D
+
+7. Select the result that would be obtained from this code:
+SELECT name FROM world
+ WHERE continent = 'South America'
+   AND population > 40000000
+
+A.Afghanistan
+Brazil
+Colombia
+
+B.Brazil
+
+C.Brazil
+Colombia
+
+D.Brazil	South America
+Colombia	South America
+
+E.Brazil	182800000
+Colombia	45600000
+
+ANSWER : C
+
+
+Score the test
+Your score is: 7 out of 7
