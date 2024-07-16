@@ -1,0 +1,88 @@
+1. Select the code that shows the name, region, and population of the smallest country in each region
+Options:
+
+SELECT region, name, FROM bbc x WHERE population <= ALL (SELECT population FROM bbc y WHERE y.region=x.region AND population>0)
+SELECT region, name, population FROM bbc WHERE population <= ALL (SELECT population FROM bbc WHERE population>0)
+SELECT region, name, population FROM bbc x WHERE population <= ALL (SELECT population FROM bbc y WHERE y.region=x.region AND population>0)
+SELECT region, name, population FROM bbc x WHERE population = ALL (SELECT population FROM bbc y WHERE y.region=x.region AND population>0)
+SELECT region, name, population FROM bbc x WHERE population <= ALL (SELECT population FROM bbc y WHERE y.region=x.region AND population<0)
+Correct Answer:Option 3
+
+2. Select the code that shows the countries belonging to regions with all populations over 50000
+Options:
+
+SELECT name,region,population FROM bbc x WHERE 50000 < ALL (SELECT population FROM bbc y WHERE population>0)
+SELECT name,region,population FROM bbc x WHERE 50000 < ALL (SELECT population FROM bbc y WHERE x.region=y.region AND y.population>0)
+SELECT name,region,population FROM bbc x WHERE 50000 = ALL (SELECT population FROM bbc y WHERE x.region=y.region AND y.population>0)
+SELECT name,region,population FROM bbc x WHERE 50000 > ALL (SELECT population FROM bbc y WHERE x.region=y.region AND y.population>0)
+SELECT name,region,population FROM bbc x WHERE 500000 < ALL (SELECT population FROM bbc y WHERE x.region=y.region AND y.population>0)
+Correct Answer:Option 2
+
+3. Select the code that shows the countries with a less than a third of the population of the countries around it
+Options:
+
+SELECT name, region FROM bbc x WHERE population < ALL (SELECT population/3 FROM bbc y WHERE y.region = x.region AND y.name != x.name)
+SELECT name, region FROM bbc x WHERE population = ALL (SELECT population/3 FROM bbc y WHERE y.region = x.region AND y.name != x.name)
+SELECT name, region FROM bbc x WHERE population > ALL (SELECT population/3 FROM bbc y WHERE y.region = x.region AND y.name != x.name)
+SELECT name, region FROM bbc x WHERE population < ALL (SELECT population*3 FROM bbc y WHERE y.region = x.region AND y.name != x.name)
+SELECT name, region FROM bbc x WHERE population < ALL (SELECT population/3 FROM bbc y WHERE y.name != x.name)
+Correct Answer:Option 1
+
+4. Select the result that would be obtained from the following code:
+sql
+Copy code
+SELECT name FROM bbc
+ WHERE population >
+       (SELECT population
+          FROM bbc
+         WHERE name='United Kingdom')
+   AND region IN
+       (SELECT region
+          FROM bbc
+         WHERE name = 'United Kingdom')
+Options:
+
+Table-A: Andorra, Albania, Austria, Bulgaria
+Table-B: France, Germany, Russia, Turkey
+Table-C: France, Germany, Andorra, Albania
+Table-D: France, Germany, Russia, Turkey
+Table-E: France, Germany, Russia, Turkey, Brazil, United States of USA, Canada
+Correct Answer:Table-D
+
+5. Select the code that would show the countries with a greater GDP than any country in Africa (some countries may have NULL GDP values).
+Options:
+
+SELECT name FROM bbc WHERE gdp > ALL (SELECT MAX(gdp) FROM bbc WHERE region = 'Africa' AND gdp=0)
+SELECT name FROM bbc WHERE gdp > (SELECT MAX(gdp) FROM bbc WHERE region = 'Africa')
+SELECT name FROM bbc WHERE gdp > ALL (SELECT MIN(gdp) FROM bbc WHERE region = 'Africa')
+SELECT name FROM bbc WHERE gdp > ALL (SELECT gdp FROM bbc WHERE region = 'Africa')
+SELECT name FROM bbc WHERE gdp > ALL (SELECT gdp FROM bbc WHERE region = 'Africa' AND gdp<>NULL)
+Correct Answer:Option 4
+
+6. Select the code that shows the countries with population smaller than Russia but bigger than Denmark
+Options:
+
+SELECT name FROM bbc WHERE population < (SELECT population FROM bbc WHERE name='Denmark') AND population > (SELECT population FROM bbc WHERE name='Russia')
+SELECT name FROM bbc WHERE population < (SELECT population FROM bbc WHERE name='Russia') AND population > (SELECT population FROM bbc WHERE name='Denmark')
+SELECT name FROM bbc WHERE population = (SELECT population FROM bbc WHERE name='Russia') AND population > (SELECT population FROM bbc WHERE name='Denmark')
+SELECT name FROM bbc WHERE population > (SELECT population FROM bbc WHERE name='Russia') AND population > (SELECT population FROM bbc WHERE name='Denmark')
+SELECT name FROM bbc WHERE population < (SELECT population FROM bbc WHERE name='Russia' AND population > (SELECT population FROM bbc WHERE name='Denmark'))
+Correct Answer:Option 2
+
+7. Select the result that would be obtained from the following code:
+sql
+Copy code
+SELECT name FROM bbc
+ WHERE population > ALL
+       (SELECT MAX(population)
+          FROM bbc
+         WHERE region = 'Europe')
+   AND region = 'South Asia'
+Options:
+
+Table-A: Afghanistan, Bhutan, Nepal, Sri Lanka, The Maldives
+Table-B: Bangladesh, India, Pakistan
+Table-C: China, India
+Table-D: Brazil, Bangladesh, China, India
+Table-E: France, Germany, Russia, Turkey
+Correct Answer:Table-B
