@@ -1,0 +1,91 @@
+SUM and COUNT QUIZ
+
+bbc
+name	region	area	population	gdp
+Afghanistan	South Asia	652225	26000000	
+Albania	Europe	28728	3200000	6656000000
+Algeria	Middle East	2400000	32900000	75012000000
+Andorra	Europe	468	64000	
+...
+
+
+1.Select the statement that shows the sum of the population of all countries in 'Europe':
+
+A. SELECT name, population FROM bbc WHERE region = 'Europe'
+B. SELECT population FROM bbc WHERE region = 'Europe' SUM BY region
+C. SELECT SUM(population) FROM bbc WHERE region = 'Europe'
+D. SELECT SUM(population FROM bbc WHERE region = 'Europe')
+E. SUM population FROM bbc WHERE region = 'Europe'
+Answer: C. SELECT SUM(population) FROM bbc WHERE region = 'Europe'
+
+2.Select the statement that shows the number of countries with a population smaller than 150,000:
+
+A. SELECT COUNT(name) FROM bbc WHERE population < 150000
+B. SELECT COUNT(population < 150000) FROM bbc
+C. SELECT name FROM bbc WHERE population < 150000
+D. SELECT population AS COUNT FROM bbc WHERE population < 150000
+E. SELECT SUM() FROM bbc WHERE population < 150000
+Answer: A. SELECT COUNT(name) FROM bbc WHERE population < 150000
+
+3.Select the list of core SQL aggregate functions:
+
+A. AVG(), COUNT(), FIRST(), LAST(), SUM()
+B. AVG(), COUNT(), MAX(), MEDIAN(), MIN(), ROUND(), SUM()
+C. AVG(), COUNT(), CONCAT(), FIRST(), LAST(), MAX(), MIN(), SUM()
+D. AVG(), COUNT(), MAX(), MIN(), SUM()
+E. COUNT(), SUM()
+Answer: D. AVG(), COUNT(), MAX(), MIN(), SUM()
+
+4.Select the result that would be obtained from the following code:
+
+SELECT region, SUM(area)
+FROM bbc
+WHERE SUM(area) > 15000000
+GROUP BY region
+A. Table-A
+B. Table-B
+C. Table-C
+D. No result due to invalid use of the GROUP BY function
+E. No result due to invalid use of the WHERE function
+Answer: E. No result due to invalid use of the WHERE function
+
+5.Select the statement that shows the average population of 'Poland', 'Germany', and 'Denmark':
+
+A. SELECT AVG(population) FROM bbc WHERE name = ('Poland', 'Germany', 'Denmark')
+B. SELECT AVG(population) FROM bbc WHERE name IN ('Poland', 'Germany', 'Denmark')
+C. SELECT AVG(population) FROM bbc WHERE name LIKE ('Poland', 'Germany', 'Denmark')
+D. SELECT AVG(population) FROM bbc WHERE name LIKE (Poland, Germany, Denmark)
+E. SELECT population FROM bbc WHERE name IN ('Poland', 'Germany', 'Denmark')
+Answer: B. SELECT AVG(population) FROM bbc WHERE name IN ('Poland', 'Germany', 'Denmark')
+
+6.Select the statement that shows the median population density of each region:
+
+A. SELECT region, AVG(population/area) AS density FROM bbc
+B. SELECT region, COUNT(population)/COUNT(area) AS density FROM bbc GROUP BY region
+C. SELECT region, SUM(population)/COUNT(area) AS density FROM bbc GROUP BY region
+D. SELECT region, SUM(population)/SUM(area) AS density FROM bbc HAVING region
+E. SELECT region, SUM(population)/SUM(area) AS density FROM bbc GROUP BY region
+Answer: E. SELECT region, SUM(population)/SUM(area) AS density FROM bbc GROUP BY region
+
+7.Select the statement that shows the name and population density of the country with the largest population:
+
+A. SELECT name, density AS population/area FROM bbc WHERE population = MAX(population)
+B. SELECT name, density AS population/area FROM bbc WHERE population = (SELECT MAX(population) FROM bbc)
+C. SELECT name, MAX(population) FROM bbc WHERE population / (SELECT area FROM bbc)
+D. SELECT name, population/area AS density FROM bbc WHERE population = (SELECT MAX(population) FROM bbc)
+E. SELECT name, population/area AS density FROM bbc WHERE population > (SELECT MAX(population) FROM bbc)
+Answer: D. SELECT name, population/area AS density FROM bbc WHERE population = (SELECT MAX(population) FROM bbc)
+
+8.Pick the result that would be obtained from the following code:
+
+SELECT region, SUM(area)
+FROM bbc
+GROUP BY region
+HAVING SUM(area) <= 20000000
+
+A. Table-A
+B. Table-B
+C. Table-C
+D. Table-D
+E. Table-E
+Answer: D. Table-D
